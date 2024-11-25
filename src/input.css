@@ -1,0 +1,275 @@
+/* ./src/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 定義變數－顏色 */
+:root {
+    --primary: #6847D4;
+    --primaryLight1: #EDEFFB;
+    /* 最亮 */
+    --primaryLight2: #A0A4D1;
+    --secondary: #3F3D56;
+    --secondaryLight1: #625F78;
+    --warning: #E63946;
+    --lightAccent1: #FFFFFF;
+    /* 最亮 */
+    --lightAccent2: #F9FAFB;
+    --lightAccent3: #EDEDED;
+
+    --category-purple: #5F5FE3;
+    --category-blue: #7DCDF2;
+    --category-yellow: #FFD37D;
+    --category-pink: #DF7ACA;
+    --category-green: #77C6B3;
+
+    --font-size-sm: 0.75rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.75rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+}
+
+* {
+    transition: all .4s;
+}
+
+/* progess */
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--lightAccent3);
+    /* 未完成部分的背景色 */
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--category-color);
+}
+
+progress::-moz-progress-bar {
+    background-color: var(--category-color);
+}
+
+/* 文字大小 */
+small {
+    font-size: var(--font-size-sm);
+}
+
+/* section */
+section {
+    padding: 4rem;
+    gap: 2rem;
+    display: flex;
+}
+
+/* table */
+
+/* 在thead和tbody之間創建間隔 */
+table tbody::before {
+    content: '';
+    display: block;
+    margin-top: 12px;
+}
+
+table thead {
+    border-bottom: 1px solid var(--secondary);
+}
+
+table tbody tr td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+table td,
+th {
+    padding-top: .35rem;
+    padding-bottom: .35rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--primaryLight1);
+}
+
+table td:first-child {
+    text-align: left;
+}
+
+/* button */
+button,.btn-base-oval {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+button:hover,
+button:active,
+button:focus,
+.btn-base-oval:hover,
+.btn-base-oval:active,
+.btn-base-oval:focus {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.categoryBtn {
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.categoryBtn:before {
+    content: '';
+    position: absolute;
+    border: 4px solid var(--category-color);
+    border-radius: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-property: top, right, bottom, left;
+    transition-property: top, right, bottom, left;
+}
+
+.categoryBtn:hover:before,
+.categoryBtn:focus:before,
+.categoryBtn:active:before {
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.btn-base-rec {
+    background-color: var(--secondary);
+    color: var(--lightAccent1);
+    border-radius: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+}
+
+.btn-base-oval {
+    background-color: var(--secondary);
+    color: var(--lightAccent1);
+    border-radius: 9999px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+}
+
+.btn-warning-rec {
+    background-color: var(--warning);
+    color: var(--lightAccent1);
+    border-radius: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+}
+
+.btn-warning-oval {
+    background-color: var(--warning);
+    color: var(--lightAccent1);
+    border-radius: 9999px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+}
+
+
+.btn-warning-squ {
+    background-color: var(--warning);
+    color: var(--lightAccent1);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* card */
+.categoryCard {
+    width: calc(33% - 1.25rem);
+}
+
+/* chart */
+.chart {
+    width: 100%;
+    max-width: 24rem;
+    /* 配合父層寬度設置 */
+    height: auto;
+}
+
+.c3-chart-arcs-title {
+    font-size: 2rem;
+    font-size: var(--font-size-base);
+    fill: var(--secondary);
+}
+
+.c3-legend-item {
+    display: block;
+    /* 確保圖例項目可見 */
+}
+
+.c3-legend-item text {
+    font-size: .75rem;
+    /* 確保文字大小適中 */
+}
+
+/* rwd */
+@media screen and (max-width: 800px) {
+    .categoryCard {
+        width: calc(50% - 1.25rem);
+    }
+
+    section {
+        padding: 3rem;
+    }
+
+    .footer-pic {
+        height: 140px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .categoryCard {
+        width: 100%;
+    }
+
+    .background {
+        height: 2.5rem !important;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    .footer-pic {
+        height: 100px;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+}
