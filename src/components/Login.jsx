@@ -45,7 +45,7 @@ export default function Login() {
 
     return (
         <section className='flex justify-center items-end gap-32 lg:flex-wrap'>
-            <div className="bg-left-bottom bg-no-repeat bg-contain w-full max-w-[430px] h-[500px] md:h-[300px] lg:order-2" style={{ backgroundImage: `url('/assets/login_cover.png')` }}></div>
+            <div className="bg-left-bottom bg-no-repeat bg-contain w-full max-w-[430px] h-[500px] md:h-[300px] lg:order-2" style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/login_cover.png')` }}></div>
             <div className='text-secondary max-w-[22rem] lg:max-w-[18rem] lg:order-1'>
                 <div className='mb-8'>
                     <h1 className='text-5xl mt-12 mb-4 font-bold whitespace-nowrap md:text-4xl'>你還在煩惱如何<br /><span className='text-primary'>管理金錢？</span></h1>

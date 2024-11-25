@@ -27,7 +27,7 @@ export default function Main() {
             {
                 userName && (
                     <footer className='mt-12'>
-                        <div className="footer-pic bg-bottom bg-no-repeat bg-contain w-full h-[264px]" style={{ backgroundImage: `url('/assets/bg_3.svg')` }}></div>
+                        <div className="footer-pic bg-bottom bg-no-repeat bg-contain w-full h-[264px]" style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_3.svg')` }}></div>
                     </footer>
                 )
             }

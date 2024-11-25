@@ -60,13 +60,13 @@ export default function Dashboard() {
                                 }
                             </section>
 
-                            <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('/assets/bg_1.svg')` }}></div>
+                            <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_1.svg')` }}></div>
 
                             {category && category.length > 0 && (
                                 <>
                                     <CategoryForm category={category} />
 
-                                    <div id="background" className='background bg-left bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('/assets/bg_2.svg')` }}></div>
+                                    <div id="background" className='background bg-left bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_2.svg')` }}></div>
 
                                     {
                                         expense && (
