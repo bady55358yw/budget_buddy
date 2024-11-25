@@ -285,7 +285,6 @@ export async function getWeatherData(city) {
     try {
         const response = await axios.get(url)
         const data = response.data
-
         const weatherData = {
             description: data.records.location[0].weatherElement[0].time[0].parameter.parameterName,
             minTemp: data.records.location[0].weatherElement[2].time[0].parameter.parameterName,

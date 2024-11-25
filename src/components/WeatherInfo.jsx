@@ -72,13 +72,13 @@ export default function WeatherInfo(props) {
             const fetchDefaultWeather = async () => {
                 try {
                     const data = await getWeatherData("臺中市")
-                    setWeatherDescription(data.records.location[0].weatherElement[0].time[0].parameter.parameterName);
+                    setWeatherDescription(data.description);
                     setTemperature({
-                        minTemp: data.records.location[0].weatherElement[2].time[0].parameter.parameterName,
-                        maxTemp: data.records.location[0].weatherElement[4].time[0].parameter.parameterName
+                        minTemp: data.minTemp,
+                        maxTemp: data.maxTemp
                     })
                     // 取得對應的天氣 icon 路徑
-                    const weatherValue = data.records.location[0].weatherElement[0].time[0].parameter.parameterValue
+                    const weatherValue = data.value
                     setWeatherIcon(weartherIconList[weatherValue])
                 }
                 catch (error) {
@@ -111,7 +111,7 @@ export default function WeatherInfo(props) {
                         minTemp: weatherData.minTemp,
                         maxTemp: weatherData.maxTemp
                     })
-                    
+
                     // 取得對應的天氣 icon 路徑
                     const weatherValue = weatherData.value
                     setWeatherIcon(weartherIconList[weatherValue])
