@@ -1,5 +1,5 @@
-import React from 'react'
-import { useLoaderData, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useLoaderData, Link, useNavigate } from 'react-router-dom'
 
 // 引入 utilities
 import { createCategory, createExpense, fetchData, deleteSinExpense } from '../utilities'
@@ -8,12 +8,13 @@ import { createCategory, createExpense, fetchData, deleteSinExpense } from '../u
 import AddCategory from '../components/AddCategory'
 import AddExpense from '../components/AddExpense'
 import ExpenseForm from '../components/ExpenseForm'
+import ImportData from '../components/ImportData'
 
 // 引入 toast
 import { toast } from 'react-toastify'
 
 // 引入 icon
-import { HomeIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { HomeIcon } from '@heroicons/react/24/outline'
 
 // --- 底下開始撰寫 ---
 
@@ -63,10 +64,25 @@ export default function Record() {
   const category = data.category || []
   const expense = data.expense || []
 
+  const [render, setRender] = useState(0)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    navigate('/record')
+  }, [render, navigate])
+
+  const handleRender = () => {
+    setRender(prevRender => prevRender + 1)
+  }
+
   return (
     <>
       <section id="record" className='flex flex-col'>
-        <h2 className='text-secondary text-4xl lg:text-3xl'>新增花費</h2>
+        <div className='flex gap-8 sm:gap-4'>
+          <h2 className='text-secondary text-4xl lg:text-3xl'>新增花費</h2>
+          <ImportData trigerRender={handleRender} />
+        </div>
+
         <div className='flex gap-8 lg:flex-wrap'>
           <AddCategory />
           <AddExpense category={category} />
@@ -87,6 +103,5 @@ export default function Record() {
         )
       }
     </>
-
   )
 }

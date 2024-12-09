@@ -8,7 +8,9 @@ import { nanoid } from 'nanoid';
 import axios from "axios";
 
 // 引入 validate.js
-import validate from 'validate.js';
+import validate, { result } from 'validate.js';
+
+import Papa from 'papaparse'
 
 // --- 底下開始撰寫 ---
 // 現成的預設資料
@@ -142,7 +144,6 @@ export function preExisting() {
     localStorage.setItem("expense", JSON.stringify(expenseArr))
 }
 
-
 // 取得 local storage 的資料 => getItem
 export function fetchData(key) {
     return JSON.parse(localStorage.getItem(key))
@@ -183,7 +184,6 @@ function getColor() {
     localStorage.setItem("colorIndex", JSON.stringify(colorIndex))
     return color[colorIndex]
 }
-
 
 // 建立項目：存入 local storage 的資料 => setItem
 export function createExpense(data) {
@@ -339,19 +339,19 @@ export function verifyCategory(inputData) {
     // 驗證機制規範
     const constraints = {
         categoryName: {
-            presence: { 
+            presence: {
                 allowEmpty: false, // 禁止空值
-                message: "類別名稱為必填！" 
+                message: "類別名稱為必填！"
             },
         },
         categoryBudget: {
-            presence: { 
+            presence: {
                 allowEmpty: false, // 禁止空值
-                message: "類別預算為必填！" 
+                message: "類別預算為必填！"
             },
-            numericality: { 
-                greaterThan: 0, 
-                message: "類別預算必須為大於 0 的數字！" 
+            numericality: {
+                greaterThan: 0,
+                message: "類別預算必須為大於 0 的數字！"
             },
         }
     }
@@ -368,25 +368,25 @@ export function verifyExpense(inputData) {
     // 驗證機制規範
     const constraints = {
         expenseName: {
-            presence: { 
+            presence: {
                 allowEmpty: false, // 禁止空值
-                message: "項目名稱為必填！" 
+                message: "項目名稱為必填！"
             },
         },
         expenseAmount: {
-            presence: { 
+            presence: {
                 allowEmpty: false, // 禁止空值
-                message: "項目金額為必填！" 
+                message: "項目金額為必填！"
             },
-            numericality: { 
-                greaterThan: 0, 
-                message: "項目金額必須為大於 0 的數字！" 
+            numericality: {
+                greaterThan: 0,
+                message: "項目金額必須為大於 0 的數字！"
             },
         },
         expenseCategory: {
-            presence: { 
+            presence: {
                 allowEmpty: false, // 禁止空值
-                message: "請先新增類別！" 
+                message: "請先新增類別！"
             },
         },
     }
@@ -395,4 +395,179 @@ export function verifyExpense(inputData) {
     validate.options = { fullMessages: false };
     const result = validate(inputData, constraints)
     return result
+}
+
+// 篩選要匯出的資料
+export function filterData(data) {
+    const newData = {
+        ...data,
+        category: Array.isArray(data.category)
+            ? data.category.map((item) => {
+                // 用解構賦值濾掉 color
+                const { category_color, ...otherProperties } = item
+                return otherProperties
+            })
+            : [],
+        expense: data.expense
+    }
+    return newData
+}
+
+// 將要匯出的資料整理成給 csv 用
+export function formatDataToCSV(data) {
+    //  轉換 category 資料為 CSV
+    const categoryHeader = ['類別ID', '類別名稱', '類別預算']
+    const categoryRows = data.category.map((item) => {
+        return [
+            item.category_id,
+            item.category_name,
+            item.category_budget
+        ]
+    })
+
+    //  轉換 expense 資料為 CSV
+    const expenseHeader = ['項目ID', '項目名稱', '項目金額', '項目類別', '類別ID', '日期']
+    const expenseRows = data.expense.map((item) => {
+        return [
+            item.expense_id,
+            item.expense_name,
+            item.expense_amount,
+            item.expense_categoryName,
+            item.expense_categoryId,
+            item.expense_date
+        ]
+    })
+
+    // 拼接 CSV 字串
+    let cvsContent
+
+    cvsContent = "類別資料\n"
+    cvsContent += categoryHeader.join(',') + '\n'
+    categoryRows.forEach(row => {
+        cvsContent += row.join(',') + '\n'
+    })
+
+    cvsContent += "\n項目資料\n"
+    cvsContent += expenseHeader.join(',') + '\n'
+    expenseRows.forEach(row => {
+        cvsContent += row.join(',') + '\n'
+    })
+    return cvsContent
+}
+
+// 解析匯入的 CSV 檔案
+export function parseCSV(csvFile) {
+    return new Promise((resolve, reject) => {
+        Papa.parse(csvFile, {
+            complete: (result) => {
+                try {
+                    const data = inspectCSV(result.data)
+                    resolve(data) // 成功時回傳資料
+                }
+                catch (error) {
+                    reject(error) // 若出現錯誤，回傳錯誤
+                }
+            },
+            header: true, // 使用第一行作為標題
+            skipEmptyLines: true, // 跳過空行
+        })
+    })
+}
+
+// 檢查 csv 檔案是否有含必要欄位
+function inspectCSV(rows) {
+    const categoryData = []
+    const expenseData = []
+
+    let currentSection = "category"
+
+    rows.forEach(row => {
+
+        // 如果是空行就跳過 ( 要放在最前面，否則在判斷區塊是否為 expense 會有誤 )
+        if (!row.category_id && !row.category_budget && !row.category_name) {
+            return
+        }
+
+        // 判斷目前的區塊是不是 expense
+        if (
+            row.category_id === "expense_id" &&
+            row.category_budget === "expense_amount" &&
+            row.category_name === "expense_name" &&
+            row[""] === "expense_categoryId"
+        ) {
+            currentSection = 'expense'
+        }
+
+        if (currentSection === 'category') {
+            // 若「類別 id、類別名稱、類別預算」沒寫就忽略
+            if (row.category_id && row.category_name && row.category_budget) {
+                categoryData.push({
+                    category_id: row.category_id,
+                    category_name: row.category_name,
+                    category_budget: row.category_budget
+                })
+            }
+        }
+
+        if (currentSection === 'expense') {
+            // 若「項目 id、項目名稱、項目金額、類別 id」沒寫就忽略
+            if (row.category_id && row.category_name && row.category_budget && row[""]) {
+                expenseData.push({
+                    // 因為 header: true，所以 key 值會是原本的 category
+                    expense_id: row.category_id,
+                    expense_name: row.category_name,
+                    expense_amount: row.category_budget,
+                    expense_categoryId: row[""]
+                })
+            }
+        }
+    })
+    return { categoryData, expenseData }
+}
+
+// 新增匯入的類別資料
+export function importCategory(categoryData) {
+
+    categoryData.forEach((data) => {
+        const categoryArr = fetchData("category") ?? [];
+        const isDuplicate = categoryArr.some((category) => category.category_id === data.category_id)
+
+        if (!isDuplicate) {
+            const randomColor = getColor()
+            const newCategory = {
+                category_id: data.category_id,
+                category_name: data.category_name,
+                category_budget: data.category_budget,
+                category_color: randomColor,
+            }
+            const updateCategoryArr = [...categoryArr, newCategory]
+            return localStorage.setItem("category", JSON.stringify(updateCategoryArr))
+        }
+    })
+}
+
+// 新增匯入的項目資料
+export function importExpense(expenseData) {
+    expenseData.forEach((data, index) => {
+        if (index > 1) {
+            const expenseArr = fetchData("expense") ?? []
+            const isDuplicate = expenseArr.some((expense) => expense.expense_id === data.expense_id)
+
+            if (!isDuplicate) {
+                const categoryName = matchCategoryId(data.expense_categoryId)
+                const date = formatDate(new Date())
+                const newExpenseObj = {
+                    expense_id: data.expense_id,
+                    expense_name: data.expense_name,
+                    expense_amount: data.expense_amount,
+                    expense_categoryId: data.expense_categoryId,
+                    expense_categoryName: categoryName,
+                    expense_date: date,
+                }
+
+                const updateExpense = [newExpenseObj, ...expenseArr]
+                return localStorage.setItem("expense", JSON.stringify(updateExpense))
+            }
+        }
+    })
 }
