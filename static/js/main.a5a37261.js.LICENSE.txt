@@ -1,3 +1,10 @@
+/* @license
+Papa Parse
+v5.4.1
+https://github.com/mholt/PapaParse
+License: MIT
+*/
+
 /* @license C3.js v0.7.20 | (c) C3 Team and other contributors | http://c3js.org/ */
 
 /*!
