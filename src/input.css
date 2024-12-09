@@ -237,7 +237,27 @@ button:focus,
     /* 確保文字大小適中 */
 }
 
+/* note */
+.note{
+    background-color: #f6ec86;
+    padding: 20px;
+    min-width: 280px;
+    height: 250px;
+}
+
+/* section:baseInfo */
+.sec1 {
+    width: calc(33% - 1.25rem);
+    min-height: 14rem;
+}
+
 /* rwd */
+@media screen and (max-width: 1024px) {
+    .sec1 {
+        width: calc(50% - 1.25rem);
+    }
+}
+
 @media screen and (max-width: 800px) {
     .categoryCard {
         width: calc(50% - 1.25rem);
@@ -253,6 +273,10 @@ button:focus,
 }
 
 @media screen and (max-width: 640px) {
+    .sec1 {
+        width: 100%;
+    }
+
     .categoryCard {
         width: 100%;
     }

@@ -131,11 +131,10 @@ export default function WeatherInfo(props) {
     }, [])
 
     return (
-        <div id='baseInfo' className='text-secondary'>
-            <h2 className='text-4xl lg:text-3xl md:text-2xl'>您好！<span className="text-primary">{userName}</span></h2>
-            <div className='text-lg my-6 lg:text-base'>
+        <div id='baseInfo' className='sec1 text-secondary py-4 sm:py-0'>
+            <div className='text-lg my-6 lg:text-base md:mx-auto'>
                 <p>位置：{loading ? ("---") : (`${area.city} ${area.suburb}`)}</p>
-                <p>時間：{time}</p>
+                <p className='whitespace-nowrap min-w-64'>時間：{time}</p>
                 <p>氣溫：{loading ? ("---") : (`${temperature.minTemp}℃~${temperature.maxTemp}℃`)}</p>
                 <p className='flex items-center'>天氣：{loading ? ("---") : (<>{weatherDescription}<img src={weatherIcon} alt="weather icon" width={42} /></>)}</p>
             </div>

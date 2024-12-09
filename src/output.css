@@ -626,12 +626,20 @@ video {
   height: 500px;
 }
 
+.min-h-\[16rem\] {
+  min-height: 16rem;
+}
+
 .w-auto {
   width: auto;
 }
 
 .w-full {
   width: 100%;
+}
+
+.min-w-64 {
+  min-width: 16rem;
 }
 
 .max-w-\[22rem\] {
@@ -694,10 +702,6 @@ video {
   gap: 3rem;
 }
 
-.gap-28 {
-  gap: 7rem;
-}
-
 .gap-32 {
   gap: 8rem;
 }
@@ -728,10 +732,6 @@ video {
 
 .rounded-2xl {
   border-radius: 1rem;
-}
-
-.rounded-\[24px\] {
-  border-radius: 24px;
 }
 
 .rounded-full {
@@ -1156,7 +1156,29 @@ button:focus,
   /* 確保文字大小適中 */
 }
 
+/* note */
+
+.note{
+  background-color: #f6ec86;
+  padding: 20px;
+  min-width: 280px;
+  height: 250px;
+}
+
+/* section:baseInfo */
+
+.sec1 {
+  width: calc(33% - 1.25rem);
+  min-height: 14rem;
+}
+
 /* rwd */
+
+@media screen and (max-width: 1024px) {
+  .sec1 {
+    width: calc(50% - 1.25rem);
+  }
+}
 
 @media screen and (max-width: 800px) {
   .categoryCard {
@@ -1173,6 +1195,10 @@ button:focus,
 }
 
 @media screen and (max-width: 640px) {
+  .sec1 {
+    width: 100%;
+  }
+
   .categoryCard {
     width: 100%;
   }
@@ -1206,9 +1232,43 @@ button:focus,
   .sm\:max-w-\[16rem\] {
     max-width: 16rem;
   }
+
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:items-baseline {
+    align-items: baseline;
+  }
+
+  .sm\:gap-4 {
+    gap: 1rem;
+  }
+
+  .sm\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }
 
 @media (max-width: 800px) {
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .md\:mt-4 {
+    margin-top: 1rem;
+  }
+
+  .md\:mt-8 {
+    margin-top: 2rem;
+  }
+
+  .md\:mt-12 {
+    margin-top: 3rem;
+  }
+
   .md\:h-\[300px\] {
     height: 300px;
   }
@@ -1219,6 +1279,10 @@ button:focus,
 
   .md\:flex-wrap {
     flex-wrap: wrap;
+  }
+
+  .md\:items-center {
+    align-items: center;
   }
 
   .md\:text-2xl {
@@ -1261,10 +1325,6 @@ button:focus,
     gap: 1rem;
   }
 
-  .lg\:gap-8 {
-    gap: 2rem;
-  }
-
   .lg\:text-3xl {
     font-size: var(--font-size-3xl);
   }
@@ -1275,5 +1335,11 @@ button:focus,
 
   .lg\:text-lg {
     font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 1200px) {
+  .xl\:w-full {
+    width: 100%;
   }
 }
