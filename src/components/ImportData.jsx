@@ -4,8 +4,6 @@ import { toast } from 'react-toastify'
 
 import { parseCSV, importCategory, importExpense } from '../utilities'
 
-
-
 export default function ImportData(props) {
     const { trigerRender } = props
 

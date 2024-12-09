@@ -9,6 +9,7 @@ import AddCategory from '../components/AddCategory'
 import AddExpense from '../components/AddExpense'
 import ExpenseForm from '../components/ExpenseForm'
 import ImportData from '../components/ImportData'
+import DownloadExample from '../components/DownloadExample'
 
 // 引入 toast
 import { toast } from 'react-toastify'
@@ -78,9 +79,12 @@ export default function Record() {
   return (
     <>
       <section id="record" className='flex flex-col'>
-        <div className='flex gap-8 sm:gap-4'>
+        <div className='flex gap-8 sm:gap-4 md:flex-col'>
           <h2 className='text-secondary text-4xl lg:text-3xl'>新增花費</h2>
-          <ImportData trigerRender={handleRender} />
+          <div className='flex items-center gap-4'>
+            <ImportData trigerRender={handleRender} />
+            <DownloadExample />
+          </div>
         </div>
 
         <div className='flex gap-8 lg:flex-wrap'>
