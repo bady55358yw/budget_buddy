@@ -913,10 +913,6 @@ video {
   text-decoration-color: var(--primary);
 }
 
-.underline-offset-4 {
-  text-underline-offset: 4px;
-}
-
 .underline-offset-8 {
   text-underline-offset: 8px;
 }
@@ -1234,18 +1230,6 @@ button:focus,
   h2 {
     font-size: 1.5rem !important;
   }
-}
-
-.hover\:text-lg:hover {
-  font-size: var(--font-size-lg);
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
-}
-
-.hover\:text-primaryLight2:hover {
-  color: var(--primaryLight2);
 }
 
 .hover\:underline:hover {
