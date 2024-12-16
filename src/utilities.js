@@ -490,14 +490,15 @@ function inspectCSV(rows) {
 
         // 判斷目前的區塊是不是 expense
         if (
-            row.category_id === "expense_id" &&
-            row.category_budget === "expense_amount" &&
-            row.category_name === "expense_name" &&
-            row[""] === "expense_categoryId"
+            row.category_id === "expense_id" 
+            // &&
+            // row.category_budget === "expense_amount" &&
+            // row.category_name === "expense_name" &&
+            // row[""] === "expense_categoryId"
         ) {
             currentSection = 'expense'
         }
-
+        
         if (currentSection === 'category') {
             // 若「類別 id、類別名稱、類別預算」沒寫就忽略
             if (row.category_id && row.category_name && row.category_budget) {
@@ -511,13 +512,13 @@ function inspectCSV(rows) {
 
         if (currentSection === 'expense') {
             // 若「項目 id、項目名稱、項目金額、類別 id」沒寫就忽略
-            if (row.category_id && row.category_name && row.category_budget && row[""]) {
+            if (row.category_id && row.category_name && row.category_budget && row.__parsed_extra) {
                 expenseData.push({
                     // 因為 header: true，所以 key 值會是原本的 category
                     expense_id: row.category_id,
                     expense_name: row.category_name,
                     expense_amount: row.category_budget,
-                    expense_categoryId: row[""]
+                    expense_categoryId: row.__parsed_extra[0]
                 })
             }
         }
