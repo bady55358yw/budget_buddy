@@ -83,7 +83,7 @@ export default function Record() {
           <h2 className='text-secondary text-4xl lg:text-3xl'>新增花費</h2>
           <div className='flex items-center gap-4'>
             <ImportData trigerRender={handleRender} />
-            <DownloadExample />
+            {/* <DownloadExample /> */}
           </div>
         </div>
 

@@ -549,7 +549,7 @@ export function importCategory(categoryData) {
 // 新增匯入的項目資料
 export function importExpense(expenseData) {
     expenseData.forEach((data, index) => {
-        if (index > 1) {
+        if (index > 0) { //跳過expense的標題
             const expenseArr = fetchData("expense") ?? []
             const isDuplicate = expenseArr.some((expense) => expense.expense_id === data.expense_id)
 

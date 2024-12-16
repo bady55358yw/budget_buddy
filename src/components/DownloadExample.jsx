@@ -23,8 +23,8 @@ const example = {
       },
       {
         "expense_id": "1002",
-        "expense_name": "聚餐",
-        "expense_amount": 440,
+        "expense_name": "窗簾",
+        "expense_amount": 1200,
         "expense_categoryId": "2",
       },
     ]
