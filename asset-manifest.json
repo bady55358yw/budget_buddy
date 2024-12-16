@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/budget_buddy/static/css/main.50219af5.css",
-    "main.js": "/budget_buddy/static/js/main.e9fa498a.js",
+    "main.js": "/budget_buddy/static/js/main.b9351bb2.js",
     "index.html": "/budget_buddy/index.html",
     "main.50219af5.css.map": "/budget_buddy/static/css/main.50219af5.css.map",
-    "main.e9fa498a.js.map": "/budget_buddy/static/js/main.e9fa498a.js.map"
+    "main.b9351bb2.js.map": "/budget_buddy/static/js/main.b9351bb2.js.map"
   },
   "entrypoints": [
     "static/css/main.50219af5.css",
-    "static/js/main.e9fa498a.js"
+    "static/js/main.b9351bb2.js"
   ]
 }
