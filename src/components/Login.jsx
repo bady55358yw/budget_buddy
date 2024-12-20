@@ -22,6 +22,7 @@ export default function Login() {
     const navigate = useNavigate()
 
     // action 移動到自己的組件做，因為無法內聯 POST
+    // 處理新增帳戶
     function handelSubmit(e) {
         e.preventDefault(); // 避免表單提交刷新頁面
         const result = verifyInput(nameRef.current.value, emailRef.current.value)
@@ -37,6 +38,7 @@ export default function Login() {
         }
     }
 
+    // 處理新增範本
     function handleClick() {
         preExisting()
         navigate('/')
