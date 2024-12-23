@@ -86,8 +86,9 @@ const router = createHashRouter([
 export default function App() {
   return (
     <div>
-      <WeatherProvider><RouterProvider router={router} /></WeatherProvider>
-      
+      <WeatherProvider>
+        <RouterProvider router={router} />
+      </WeatherProvider>
       <ToastContainer />
     </div>
   )
