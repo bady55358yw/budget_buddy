@@ -16,6 +16,9 @@ import Category, { categoryLoader, categoryAction } from './pages/Category'
 import Expense, { expenseLoader, expenseAction } from './pages/Expense'
 import Error from './pages/Error'
 
+// 引入context
+import WeatherProvider from './contexts/WeatherProvider'
+
 // Actions
 import { logoutAction } from './actions/logout'
 
@@ -83,7 +86,8 @@ const router = createHashRouter([
 export default function App() {
   return (
     <div>
-      <RouterProvider router={router} />
+      <WeatherProvider><RouterProvider router={router} /></WeatherProvider>
+      
       <ToastContainer />
     </div>
   )
