@@ -2,7 +2,8 @@ import React from 'react'
 
 // 引入 utilities
 import { calculateExpenseAmount } from '../utilities'
-import { DivideIcon } from '@heroicons/react/24/outline'
+
+// --- 底下開始撰寫 ---
 
 export default function Note(props) {
     const { category } = props
@@ -28,21 +29,8 @@ export default function Note(props) {
                     ) : (
                         <li>目前沒有任何花費超過預算，很棒，繼續保持!</li>
                     )
-
                 }
             </ul>
         </div>
-        // <ul className='sec1 note my-8 drop-shadow-lg xl:w-full'>
-        //     {
-        //         reachBudget.length !== 0 ?(
-        //             reachBudget.map((item,index)=>{
-        //                 return <li key={index}>{item}</li>
-        //             })
-        //         ):(
-        //             <li>目前沒有任何花費超過預算，很棒，繼續保持!</li>
-        //         )
-
-        //     }
-        // </ul>
     )
 }

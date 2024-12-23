@@ -44,7 +44,7 @@ export async function dashboardAction({ request }) {
 
 export default function Dashboard() {
     const { userName, category, expense } = useLoaderData() // 從loader載入資料
-
+    
     return (
         <>
             {userName ?
