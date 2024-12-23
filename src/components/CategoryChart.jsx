@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-// 引入 C3 和 D3
-import * as d3 from 'd3';
+// 引入 C3
 import * as c3 from 'c3';
 import 'c3/c3.css';
 
@@ -13,7 +12,6 @@ import { calculateExpenseAmount } from '../utilities'
 export default function CategoryChart(props) {
 
     const { category } = props
-    const [rerender, setRerender] = useState(0)
 
     // 將項目花費加入至 category
     const newCategory = category.map(item => {
@@ -45,16 +43,23 @@ export default function CategoryChart(props) {
             },
         })
 
-        setTimeout(function () {
+        const timeout1 = setTimeout(function () {
             chart.load({
                 columns: chartData,
                 colors: categoryColor
             });
         }, 500);
 
-        setTimeout(function () {
+        const timeout2 = setTimeout(function () {
             chart.unload([]);
         }, 2500);
+
+        // 清理計時器
+        return ()=>{
+            clearTimeout(timeout1)
+            clearTimeout(timeout2)
+            chart.destroy(); // 確保 c3 chart 也被銷毀
+        }
     }, [chartData])
 
     return (
