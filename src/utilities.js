@@ -12,6 +12,7 @@ import Papa from 'papaparse'
 
 // 引入預設範本資料(使用者/類別/項目)
 import {prev_uerName,prev_categoryArr,prev_expenseArr} from './datas/defaultUserData'
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 // --- 底下開始撰寫 ---
 
@@ -283,13 +284,15 @@ export function verifyExpense(inputData) {
 export function filterData(data) {
     const newData = {
         ...data,
-        category: Array.isArray(data.category)
-            ? data.category.map((item) => {
-                // 用解構賦值濾掉 color
+        category: Array.isArray(data.category)? ( // 當未新增類別時，category 是 null，所以要再用 Array.isArray 做判斷
+            data.category.map((item) => {
+                // 用解構賦值濾掉 color (除了category_color，其他值都放入物件otherProperties)
                 const { category_color, ...otherProperties } = item
                 return otherProperties
             })
-            : [],
+        ) : (
+            []
+        ),
         expense: data.expense
     }
     return newData

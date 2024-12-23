@@ -1,6 +1,9 @@
 import React from 'react'
 
+// 引入 utilities
 import {filterData,formatDataToCSV} from '../utilities'
+
+// --- 底下開始撰寫 ---
 
 export default function ExportData(props) {
     const { data } = props
@@ -43,7 +46,6 @@ export default function ExportData(props) {
         // 下載完成後，使用 URL.revokeObjectURL() 釋放 URL 資源，避免內存洩漏
         URL.revokeObjectURL(url)
     }
-
 
     return (
         <div className='flex gap-4'>

@@ -9,8 +9,8 @@ import { DocumentTextIcon } from '@heroicons/react/24/outline'
 
 // --- 底下開始撰寫 ---
 
-export default function CategoryItem(props) {
-    const { categoryObj, notShowOverviewBtn } = props
+export default function CategoryCard(props) {
+    const { categoryObj,notShowOverviewBtn } = props
     const spendTotal = calculateExpenseAmount(categoryObj.category_id)
     const remainTotal = Number(categoryObj.category_budget - spendTotal)
 
@@ -40,8 +40,6 @@ export default function CategoryItem(props) {
                     </div>
                 )
             }
-
-
         </div>
     )
 }
