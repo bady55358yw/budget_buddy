@@ -61,13 +61,14 @@ export async function recordAction({ request }) {
 }
 
 export default function Record() {
-  const data = useLoaderData() //避免了重複呼叫 useLoaderData()
+  const data = useLoaderData() //從loader載入資料
   const category = data.category || []
   const expense = data.expense || []
 
   const [render, setRender] = useState(0)
   const navigate = useNavigate()
 
+  // 當觸發匯入檔案後，要重新 render 畫面，這樣匯入資料才會立即顯示
   useEffect(() => {
     navigate('/record')
   }, [render, navigate])
