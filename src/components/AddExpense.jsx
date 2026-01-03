@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form } from 'react-router-dom'
 
 // 引入 pubsub-js
@@ -7,7 +7,7 @@ import PubSub from 'pubsub-js'
 // 引入 icon
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
-// 引入 utilities
+// 引入 utilitiesverifyExpense
 import { verifyExpense } from '../utilities'
 
 // --- 底下開始撰寫 ---
@@ -22,21 +22,21 @@ export default function AddExpense(props) {
     })
     const [errorMsg, setErrorMsg] = useState({})
 
-    useEffect(() => {
-        // 訂閱事件
-        const token = PubSub.subscribe('updateCategory', (_, data) => {
-            // 當事件觸發時，更新狀態
-            setFormData((prevState)=>({
-                ...prevState,
-                expenseCategory:data
-            }));
-        });
+    // useEffect(() => {
+    //     // 訂閱事件
+    //     const token = PubSub.subscribe('updateCategory', (_, data) => {
+    //         // 當事件觸發時，更新狀態
+    //         setFormData((prevState)=>({
+    //             ...prevState,
+    //             expenseCategory:data
+    //         }));
+    //     });
 
-        // 清理訂閱
-        return () => {
-            PubSub.unsubscribe(token);
-        };
-    }, []);
+    //     // 清理訂閱
+    //     return () => {
+    //         PubSub.unsubscribe(token);
+    //     };
+    // }, []);
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -101,7 +101,7 @@ export default function AddExpense(props) {
                         <select
                             name="expenseCategory"
                             className='border-2 border-solid border-primaryLight2 rounded w-full p-1'
-                            value={formData.expenseCategory}
+                            value={formData.expenseCategory} // select 的 value 與 option 的 value 匹配的話，預設就會是該 option
                             onChange={handleChange}
                         >
                             {

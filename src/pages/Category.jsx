@@ -67,8 +67,8 @@ export default function Category() {
   const navigate = useNavigate()
 
   const categoryObj = category.find(item => id === item.category_id)
-  const categoryArr = category.filter(item => id === item.category_id)
-  const expenseArr = expense.filter(item => id === item.expense_categoryId)
+  const filterCategory_arr = category.filter(item => id === item.category_id)
+  const filterExpense_arr = expense.filter(item => id === item.expense_categoryId)
 
   useEffect(() => {
     if (!categoryObj) {
@@ -109,16 +109,16 @@ export default function Category() {
 
               <div className='flex gap-12 lg:gap-4 md:flex-wrap items-baseline'>
                 <CategoryItem categoryObj={categoryObj} notShowOverviewBtn={true} />
-                <AddExpense category={categoryArr} categoryName={categoryObj.category_name} categoryColor={categoryObj.category_color} />
+                <AddExpense category={filterCategory_arr} categoryName={categoryObj.category_name} categoryColor={categoryObj.category_color} />
               </div>
             </section>
 
             <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_1.svg')` }}></div>
 
             {
-              expenseArr.length > 0 ?
+              filterExpense_arr.length > 0 ?
                 (
-                  <ExpenseForm expense={expenseArr} notShowCategory={true} />
+                  <ExpenseForm expense={filterExpense_arr} notShowCategory={true} />
                 )
                 : (
                   <div className='flex justify-center mt-8'>
