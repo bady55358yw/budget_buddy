@@ -1,36 +1,35 @@
-import React from 'react'
-import { Outlet, useLoaderData } from 'react-router-dom'
+import { Outlet, useLoaderData } from "react-router-dom";
 
 // 引入 utilities
-import { fetchData } from '../utilities'
+import { fetchData } from "../utilities";
 
 // 引入一般組件
-import Nav from '../components/Nav'
+import Nav from "../components/Nav";
 
 // --- 底下開始撰寫 ---
 
 export function mainLoader() {
-    const userName = fetchData("userName")
-    return { userName }
+  const userName = fetchData("userName");
+  return { userName };
 }
 
 export default function Main() {
+  const { userName } = useLoaderData();
 
-    const { userName } = useLoaderData()
+  return (
+    <div id="layout" className="relative px-12 md:px-24 pb-24">
+      {/* Nav bg */}
+      <img
+        src={`${process.env.PUBLIC_URL}/assets/nav_bg.png`}
+        alt="nav_bg"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw]"
+      />
 
-    return (
-        <div id='layout'>
-            <Nav userName={userName} />
-            <main>
-                <Outlet />
-            </main>
-            {
-                userName && (
-                    <footer className='mt-12'>
-                        <div className="footer-pic bg-bottom bg-no-repeat bg-contain w-full h-[264px]" style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_3.svg')` }}></div>
-                    </footer>
-                )
-            }
-        </div>
-    )
+      <Nav userName={userName} />
+
+      <main className="mt-12 space-y-40">
+        <Outlet />
+      </main>
+    </div>
+  );
 }
