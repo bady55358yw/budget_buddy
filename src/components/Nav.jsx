@@ -16,22 +16,17 @@ export default function Nav(props) {
   }
 
   return (
-    <nav id="navbar" className="relative flex justify-between px-16 py-6">
-      <img
-        src={`${process.env.PUBLIC_URL}/assets/nav_bg.png`}
-        alt="nav_bg"
-        className="absolute -top-6"
-      />
-
-      <Link to="/" className="text-lightAccent1 flex items-center gap-1 group z-20">
+    <nav id="navbar" className=" flex justify-between py-6">
+      <Link
+        to="/"
+        className="text-lightAccent1 flex items-center gap-1 group z-20"
+      >
         <img
           src={`${process.env.PUBLIC_URL}/assets/logo.svg`}
           alt="logo"
           width={32}
         />
-        <span className="text-xl text-gray-900 font-medium">
-          Buddy Budget
-        </span>
+        <span className="text-xl text-gray-900 font-medium">Buddy Budget</span>
       </Link>
 
       {userName && (
