@@ -28,6 +28,7 @@ export default function WeatherProvider({children}) {
             setLoading(true);  // 開始加載
 
             if ("geolocation" in navigator) {
+                // 如果瀏覽器允許定位並且支援Geolocation API，先取得用戶的位置(經緯度)，再用位置獲取當前天氣
                 try {
                     // 取得位置 ( 因為非同步，所以外面的函式要用 async，等到接收到資料再 await )
                     const position = await new Promise((resolve, reject) =>
