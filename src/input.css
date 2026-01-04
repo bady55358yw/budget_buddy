@@ -5,23 +5,24 @@
 
 /* 定義變數－顏色 */
 :root {
-    --primary: #6847D4;
-    --primaryLight1: #EDEFFB;
+    --primary: #335CFF;
+    --primaryLight1: #EDF1FF;
     /* 最亮 */
-    --primaryLight2: #A0A4D1;
-    --secondary: #3F3D56;
-    --secondaryLight1: #625F78;
-    --warning: #E63946;
+    --primaryLight2: #E1E7FF;
+    --secondary: #1C1C1C;
+    --secondaryLight1: #7A7A7A;
+    --warning: #FB3748;
+    --warningLight1: #FFEBEC;
     --lightAccent1: #FFFFFF;
     /* 最亮 */
     --lightAccent2: #F9FAFB;
     --lightAccent3: #EDEDED;
 
-    --category-purple: #5F5FE3;
-    --category-blue: #7DCDF2;
-    --category-yellow: #FFD37D;
+    --category-purple: #7D52F4;
+    --category-blue: #47C2FF;
+    --category-darkBlue: #335CFF;
     --category-pink: #DF7ACA;
-    --category-green: #77C6B3;
+    --category-green: #22D3BB;
 
     --font-size-sm: 0.75rem;
     --font-size-base: 1rem;
@@ -189,10 +190,10 @@ button:focus,
     display: flex;
 }
 
-.btn-warning-oval {
-    background-color: var(--warning);
-    color: var(--lightAccent1);
-    border-radius: 9999px;
+.btn-warning-lighter {
+    background-color: var(--warningLight1);
+    color: var(--warning);
+    border-radius: 10px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1.25rem;

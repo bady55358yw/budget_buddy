@@ -23,6 +23,7 @@ module.exports = {
         secondary: 'var(--secondary)',
         secondaryLight1: 'var(--secondaryLight1)',
         warning: 'var(--warning)',
+        warningLight1: 'var(--warningLight1)',
         lightAccent1:'var(--lightAccent1)', //最亮
         lightAccent2: 'var(--lightAccent2)',
         lightAccent3: 'var(--lightAccent3)',
