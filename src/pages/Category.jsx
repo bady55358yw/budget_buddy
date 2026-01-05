@@ -100,20 +100,18 @@ export default function Category() {
                   <input type="hidden" name='category_id' value={categoryObj.category_id} />
                   <input type="hidden" name='category_name' value={categoryObj.category_name} />
 
-                  <button className='btn-warning-oval flex items-center gap-1 w-auto self-center' type='submit'>
+                  <button className='btn-warning-stroke flex items-center gap-1 w-auto self-center' type='submit'>
                     <span>刪除類別</span>
                     <TrashIcon width={24} />
                   </button>
                 </Form>
               </div>
 
-              <div className='flex gap-12 lg:gap-4 md:flex-wrap items-baseline'>
+              <div className='flex items-start gap-x-12'>
                 <CategoryItem categoryObj={categoryObj} notShowOverviewBtn={true} />
                 <AddExpense category={filterCategory_arr} categoryName={categoryObj.category_name} categoryColor={categoryObj.category_color} />
               </div>
             </section>
-
-            <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_1.svg')` }}></div>
 
             {
               filterExpense_arr.length > 0 ?
@@ -122,7 +120,7 @@ export default function Category() {
                 )
                 : (
                   <div className='flex justify-center mt-8'>
-                    <Link to="/" className='btn-base-oval flex items-center gap-1 w-auto self-center'>
+                    <Link to="/" className='btn-primary-stroke flex items-center gap-1 w-auto self-center'>
                       <span>回主畫面</span>
                       <HomeIcon width={24} />
                     </Link>

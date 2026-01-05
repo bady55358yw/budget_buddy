@@ -26,7 +26,7 @@ export default function Nav(props) {
           alt="logo"
           width={32}
         />
-        <span className="text-xl text-gray-900 font-medium">Buddy Budget</span>
+        <span className="text-xl text-gray-900 font-semibold">Buddy Budget</span>
       </Link>
 
       {userName && (
