@@ -49,10 +49,10 @@ export default function ExportData(props) {
 
     return (
         <div className='flex gap-4'>
-            <button onClick={exportJSON} className='btn-base-oval flex items-center gap-1'>
+            <button onClick={exportJSON} className='btn-neytral-stroke flex items-center gap-1'>
                 匯出檔案-JSON
             </button>
-            <button onClick={exportCSV} className='btn-base-oval flex items-center gap-1'>
+            <button onClick={exportCSV} className='btn-neytral-stroke flex items-center gap-1'>
                 匯出檔案-CSV
             </button>
         </div>

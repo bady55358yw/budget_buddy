@@ -69,7 +69,7 @@ table tbody::before {
 }
 
 table thead {
-  border-bottom: 1px solid #D1D1D1;
+  border-bottom: 1px solid #d1d1d1;
 }
 
 table tbody tr td {
@@ -223,12 +223,30 @@ a:hover,
 .btn-warning-rec {
   background-color: var(--warning);
   color: var(--lightAccent1);
-  border-radius: 0.25rem;
+  border-radius: 10px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   display: flex;
+}
+
+.btn-warning-stroke {
+  border: 1px solid var(--warning);
+  color: var(--warning);
+  border-radius: 10px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+}
+
+.btn-warning-stroke-sqa {
+  border: 1px solid var(--warning);
+  color: var(--warning);
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
 .btn-warning-lighter {
@@ -251,18 +269,17 @@ a:hover,
 
 /* border */
 .border-dashed {
-  background:
-    linear-gradient(to right, #7A7A7A 50%, transparent 0) top,
-    linear-gradient(to right, #7A7A7A 50%, transparent 0) bottom,
-    linear-gradient(to bottom, #7A7A7A 50%, transparent 0) left,
-    linear-gradient(to bottom, #7A7A7A 50%, transparent 0) right;
+  background: linear-gradient(to right, #7a7a7a 50%, transparent 0) top,
+    linear-gradient(to right, #7a7a7a 50%, transparent 0) bottom,
+    linear-gradient(to bottom, #7a7a7a 50%, transparent 0) left,
+    linear-gradient(to bottom, #7a7a7a 50%, transparent 0) right;
   background-size: 12px 1px, 12px 1px, 1px 12px, 1px 12px;
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
 }
 
 /* input */
 .input-primary {
-  @apply border-[1.5px]  border-primaryLight2 rounded-lg w-full py-1 px-4 placeholder:text-gray-300
+  @apply border-[1.5px]  border-primaryLight2 rounded-lg w-full py-1 px-4 placeholder:text-gray-300;
 }
 
 /* card */

@@ -55,7 +55,7 @@ export function createCategory(data) {
 
 // 取得類別顏色
 function getColor() {
-    const color = ['#5F5FE3', '#7DCDF2', '#FFD37D', '#DF7ACA', '#77C6B3']
+    const color = ['#335cff', '#47c2ff', '#7d52f4', '#df7aca', '#22d3bb']
     let colorIndex = fetchData('colorIndex') || 0
 
     colorIndex = (colorIndex + 1) % color.length
