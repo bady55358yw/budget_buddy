@@ -47,10 +47,14 @@ export default function Login() {
   }
 
   return (
-    <section className="flex-1 relative flex justify-end h-full px-48">
-      <div className="">
-        <div className="mb-8 w-[420px] space-y-8">
-          <div className="flex flex-col gap-y-3 text-6xl mt-12 mb-4 font-bold whitespace-nowrap">
+    <section className="relative flex-1 flex-col sm:flex-row items-center sm:items-start h-full sm:mt-8 gap-y-20">
+      
+
+      <div className="hidden sm:block w-[40vw]"></div>
+
+      <div className="flex flex-col">
+        <div className="mb-8 md:w-[420px] space-y-8">
+          <div className="flex flex-col gap-y-3 text-5xl md:text-6xl mt-12 mb-4 font-bold sm:whitespace-nowrap">
             <h1 className="text-gray-800">你還在煩惱如何</h1>
             <h1 className="text-primary">管理金錢？</h1>
           </div>
@@ -63,11 +67,8 @@ export default function Login() {
         <Form method="post" onSubmit={handelSubmit}>
           <div className="flex flex-col gap-8">
             <div className="flex flex-col">
-              <div className="flex gap-4 items-center">
-                <label
-                  htmlFor=""
-                  className="text-base whitespace-nowrap"
-                >
+              <div className="flex gap-4 items-baseline">
+                <label htmlFor="" className="text-base whitespace-nowrap">
                   你的名字
                 </label>
                 <input
@@ -81,11 +82,8 @@ export default function Login() {
             </div>
 
             <div className="flex flex-col">
-              <div className="flex gap-4 items-center">
-                <label
-                  htmlFor=""
-                  className="text-base whitespace-nowrap"
-                >
+              <div className="flex gap-4 items-center items-baseline">
+                <label htmlFor="" className="text-base whitespace-nowrap">
                   你的信箱
                 </label>
                 <input
@@ -119,7 +117,7 @@ export default function Login() {
         </Form>
       </div>
 
-      <div className="absolute -bottom-12 -left-12 w-full max-w-[400px] overflow-hidden">
+      <div className="sm:absolute sm:-bottom-12 sm:-left-12 w-full max-w-[300px] md:max-w-[400px]">
         <LoginCover className="w-full h-auto block" />
       </div>
     </section>
