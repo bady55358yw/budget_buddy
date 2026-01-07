@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form } from "react-router-dom";
 
 // 引入 pubsub-js
-import PubSub from "pubsub-js";
 
 // 引入 icon
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
