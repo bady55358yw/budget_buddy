@@ -6,9 +6,7 @@ import { deleteItem } from '../utilities'
 // 引入 toast
 import { toast } from 'react-toastify'
 
-// --- 底下開始撰寫 ---
-
-export function logoutAction(){
+export async function logoutAction(){
     deleteItem("userName")
     deleteItem("category")
     deleteItem("expense")

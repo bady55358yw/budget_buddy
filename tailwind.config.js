@@ -23,7 +23,6 @@ module.exports = {
         secondary: 'var(--secondary)',
         secondaryLight1: 'var(--secondaryLight1)',
         warning: 'var(--warning)',
-        warningLight1: 'var(--warningLight1)',
         lightAccent1:'var(--lightAccent1)', //最亮
         lightAccent2: 'var(--lightAccent2)',
         lightAccent3: 'var(--lightAccent3)',
@@ -35,11 +34,21 @@ module.exports = {
         'category-pink': 'var(--category-pink)',
         'category-green': 'var(--category-green)',
       },
+      fontSize: {
+        sm: 'var(--font-size-sm)',
+        base: 'var(--font-size-base)', 
+        lg: 'var(--font-size-lg)', 
+        xl: 'var(--font-size-xl)', 
+        '2xl': 'var(--font-size-2xl)',
+        '3xl': 'var(--font-size-3xl)', 
+        '4xl': ['var(--font-size-4xl)', { fontWeight: '700' }],
+        '5xl': 'var(--font-size-5xl)', 
+      },
       screens: {
-        'sm': {'min': '640px'}, 
-        'md': {'min': '800px'}, 
-        'lg': {'min': '1024px'}, 
-        'xl': {'min': '1200px'}, 
+        'sm': {'max': '640px'}, // 小於 640px 時生效
+        'md': {'max': '800px'}, // 小於 768px 時生效
+        'lg': {'max': '1024px'}, // 小於 1024px 時生效
+        'xl': {'max': '1200px'}, // 小於 1200px 時生效
       },
     },
   },

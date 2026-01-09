@@ -23,7 +23,7 @@ export default function ExpenseItem(props) {
                     <input type="hidden" name="expense_id" value={expenseItem.expense_id} />
                     <input type="hidden" name="expense_name" value={expenseItem.expense_name} />
 
-                    <button type="submit" className='btn-warning-stroke-sqa'>
+                    <button type="submit" className='btn-warning-squ'>
                         <TrashIcon width={24} />
                     </button>
                 </Form>
