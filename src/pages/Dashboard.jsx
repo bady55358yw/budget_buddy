@@ -45,35 +45,41 @@ export default function Dashboard() {
 
   return (
     <>
-      <section
-        id="summaryHeader"
-        className="flex-col items-center md:items-start"
-      >
-        <div className="flex items-baseline text-gray-900 gap-x-2">
-          <h2 className="text-4xl font-medium">{userName}</h2>{" "}
-          <h6 className="text-xl">, 您好！</h6>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 w-full">
-          {/* Weather */}
-          <WeatherInfo />
-
-          {/* Donut Chart */}
-          {expense && expense.length > 0 && (
-            <CategoryChart category={category} />
-          )}
-
-          {/* Statistics */}
-          <Note category={category} expense={expense} />
-        </div>
-      </section>
-
-      {category && category.length > 0 && (
+      {userName ? (
         <>
-          <CategoryForm category={category} expense={expense} />
+          <section
+            id="summaryHeader"
+            className="flex-col items-center md:items-start"
+          >
+            <div className="flex items-baseline text-gray-900 gap-x-2">
+              <h2 className="text-4xl font-medium">{userName}</h2>{" "}
+              <h6 className="text-xl">, 您好！</h6>
+            </div>
 
-          {expense && <ExpenseForm show7Items={true} expense={expense} />}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 w-full">
+              {/* Weather */}
+              <WeatherInfo />
+
+              {/* Donut Chart */}
+              {expense && expense.length > 0 && (
+                <CategoryChart category={category} />
+              )}
+
+              {/* Statistics */}
+              <Note category={category} expense={expense} />
+            </div>
+          </section>
+
+          {category && category.length > 0 && (
+            <>
+              <CategoryForm category={category} expense={expense} />
+
+              {expense && <ExpenseForm show7Items={true} expense={expense} />}
+            </>
+          )}
         </>
+      ) : (
+        <Login />
       )}
     </>
   );
