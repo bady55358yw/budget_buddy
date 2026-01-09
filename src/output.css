@@ -545,18 +545,6 @@ video {
   display: none;
 }
 
-.absolute {
-  position: absolute;
-}
-
-.relative {
-  position: relative;
-}
-
-.-top-6 {
-  top: -1.5rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -794,6 +782,10 @@ video {
   background-color: var(--lightAccent3);
 }
 
+.bg-primary {
+  background-color: var(--primary);
+}
+
 .bg-contain {
   background-size: contain;
 }
@@ -860,21 +852,6 @@ video {
   padding-bottom: 10rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .text-center {
   text-align: center;
 }
@@ -912,17 +889,8 @@ video {
   font-weight: 700;
 }
 
-.font-medium {
-  font-weight: 500;
-}
-
 .font-semibold {
   font-weight: 600;
-}
-
-.text-gray-900 {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .text-lightAccent1 {
@@ -963,26 +931,31 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 /* 定義變數－顏色 */
 
 :root {
-  --primary: #335CFF;
-  --primaryLight1: #EDF1FF;
+  --primary: #6847D4;
+  --primaryLight1: #EDEFFB;
   /* 最亮 */
-  --primaryLight2: #E1E7FF;
-  --secondary: #1C1C1C;
-  --secondaryLight1: #7A7A7A;
-  --warning: #FB3748;
-  --warningLight1: #FFEBEC;
+  --primaryLight2: #A0A4D1;
+  --secondary: #3F3D56;
+  --secondaryLight1: #625F78;
+  --warning: #E63946;
   --lightAccent1: #FFFFFF;
   /* 最亮 */
   --lightAccent2: #F9FAFB;
   --lightAccent3: #EDEDED;
-  --category-purple: #7D52F4;
-  --category-blue: #47C2FF;
-  --category-darkBlue: #335CFF;
+  --category-purple: #5F5FE3;
+  --category-blue: #7DCDF2;
+  --category-yellow: #FFD37D;
   --category-pink: #DF7ACA;
-  --category-green: #22D3BB;
+  --category-green: #77C6B3;
   --font-size-sm: 0.75rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
@@ -1146,10 +1119,10 @@ button:focus,
   display: flex;
 }
 
-.btn-warning-lighter {
-  background-color: var(--warningLight1);
-  color: var(--warning);
-  border-radius: 10px;
+.btn-warning-oval {
+  background-color: var(--warning);
+  color: var(--lightAccent1);
+  border-radius: 9999px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1.25rem;
@@ -1261,6 +1234,10 @@ button:focus,
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.group:hover .group-hover\:text-primaryLight2 {
+  color: var(--primaryLight2);
 }
 
 @media (max-width: 640px) {
