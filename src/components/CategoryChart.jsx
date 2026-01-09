@@ -63,8 +63,8 @@ export default function CategoryChart(props) {
     }, [chartData])
 
     return (
-        <div className=''>
-            <div id="chart" className='chart min-h-[16rem]  mx-auto'></div>
+        <div className='sec1 md:mx-auto'>
+            <div id="chart" className='chart min-h-[16rem] max-w-[24rem] sm:max-w-[16rem] py-4 mx-auto'></div>
         </div>
     )
 }

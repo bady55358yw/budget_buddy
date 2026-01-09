@@ -19,7 +19,7 @@ export default function Note(props) {
     })
 
     return (
-        <div className='col-span-1 sm:col-span-2 xl:col-span-1 my-4 w-full drop-shadow-lg'>
+        <div className='sec1 my-4 px-4 xl:w-full drop-shadow-lg md:mt-12'>
             <ul className='note'>
                 {
                     reachBudget.length !== 0 ? (
