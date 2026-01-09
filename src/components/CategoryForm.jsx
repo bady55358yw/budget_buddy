@@ -1,7 +1,7 @@
 import React from 'react'
 
 // 引入一般組件
-import CategoryCard from './CategoryCard'
+import CategoryItem from '../components/CategoryItem'
 import ExportData from '../components/ExportData'
 
 // --- 底下開始撰寫 ---
@@ -20,7 +20,7 @@ export default function CategoryForm(props) {
                     category && (
                         category.map((item => {
                             return (
-                                <CategoryCard key={item.category_id} categoryObj={item} />
+                                <CategoryItem categoryObj={item} key={item.category_id} />
                             )
                         }))
                     )

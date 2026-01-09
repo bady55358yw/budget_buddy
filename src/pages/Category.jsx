@@ -5,7 +5,7 @@ import { useParams, useLoaderData, Link, Form, redirect, useNavigate } from 'rea
 import { fetchData, deleteSinCategory, deleteMatchExpense, deleteSinExpense, createExpense } from '../utilities'
 
 // 引入一般組件
-import CategoryItem from '../components/CategoryCard'
+import CategoryItem from '../components/CategoryItem'
 import AddExpense from '../components/AddExpense'
 import ExpenseForm from '../components/ExpenseForm'
 

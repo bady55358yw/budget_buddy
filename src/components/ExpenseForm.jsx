@@ -41,11 +41,11 @@ export default function ExpenseForm(props) {
                         {
                             show7Items ? (
                                 expense.slice(0, 7).map((item) => {
-                                    return (<ExpenseItem key={item.expense_id} expenseItem={item} />)
+                                    return (<ExpenseItem expenseItem={item} key={item.expense_id} />)
                                 })
                             ) : (
                                 expense.map((item) => {
-                                    return (<ExpenseItem key={item.expense_id} expenseItem={item} notShowCategory={notShowCategory} />)
+                                    return (<ExpenseItem expenseItem={item} key={item.expense_id} notShowCategory={notShowCategory} />)
                                 })
                             )
                         }
