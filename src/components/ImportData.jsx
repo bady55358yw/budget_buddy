@@ -30,7 +30,7 @@ export default function ImportData({ trigerRender }) {
         <div className='flex items-center'>
             <button
                 onClick={() => document.getElementById('fileInput').click()} // 觸發隱藏的 input
-                className='btn-neytral-stroke flex items-center gap-1'
+                className='btn-base-oval flex items-center gap-1'
             >
                 匯入檔案-CSV
             </button>

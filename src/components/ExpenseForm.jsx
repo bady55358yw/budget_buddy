@@ -13,25 +13,25 @@ export default function ExpenseForm(props) {
     const { expense, show7Items, notShowCategory } = props
 
     return (
-        <section id="expenseForm" className='flex-col text-secondary space-y-2'>
+        <section id="expenseForm" className='flex-col text-secondary'>
             <h2 className='text-4xl lg:text-3xl'>
                 項目明細 &nbsp;
                 {show7Items && expense.length>7 ?
                     (
-                        <small className='text-base text-gray-400'>{`( 目前僅顯示 7 項，總共 ${expense.length} 項 )`}</small>
+                        <small>{`( 目前僅顯示 7 項，總共 ${expense.length} 項 )`}</small>
                     ) :
                     (
-                        <small className='text-base text-gray-400'>{`( 總共 ${expense.length} 項 )`}</small>
+                        <small>{`( 總共 ${expense.length} 項 )`}</small>
                     )
                 }
             </h2>
-            <div className='overflow-x-auto mb-8'>
+            <div className='overflow-x-auto'>
                 <table id="expenseDetailTable" className='table-auto w-full'>
                     <thead>
                         <tr>
                             {
                                 ["項目", "金額", "日期", notShowCategory ? "" : "類別", "刪除"].map((item, index) => {
-                                    return (<th key={index} className='text-gray-700 font-medium'>{item}</th>)
+                                    return (<th key={index}>{item}</th>)
                                 })
                             }
                         </tr>
@@ -54,14 +54,14 @@ export default function ExpenseForm(props) {
             </div>
             {
                 !show7Items ? (
-                    <Link to="/" className='btn-primary-stroke flex items-center gap-1 w-auto self-center'>
+                    <Link to="/" className='btn-base-oval flex items-center gap-1 w-auto self-center'>
                         <span>回主畫面</span>
                         <HomeIcon width={24} />
                     </Link>
 
                 ) : (
                     expense.length > 7 ? (
-                        <Link to="/expense" className='btn-primary-stroke flex items-center gap-1 w-auto self-center'>
+                        <Link to="/expense" className='btn-base-oval flex items-center gap-1 w-auto self-center'>
                             <span>點我看更多</span>
                             <EllipsisHorizontalCircleIcon width={24} />
                         </Link>
