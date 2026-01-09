@@ -146,18 +146,14 @@ export function formatDate(unformat_date) {
 // 經緯度轉換成城市名稱
 export async function transferCityName(lat, lon) {
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
-    try {
-        const response = await axios.get(url, {
-            headers: {
-                'Accept-Language': 'zh-TW'
-            }
-        })
-        const data = response.data
-        return { cityName: data.address.city || '臺中市', suburbName: data.address.suburb }
-    }
-    catch(error) {
-        console.log('@@--經緯度轉換城市有問題：', error);
-    }
+    const response = await axios.get(url, {
+        headers: {
+            'Accept-Language': 'zh-TW'
+        }
+    })
+    const data = response.data
+
+    return { cityName: data.address.city || '臺中市', suburbName: data.address.suburb }
 }
 
 // 取得天氣的 API 資料

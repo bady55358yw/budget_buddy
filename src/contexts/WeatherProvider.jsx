@@ -24,6 +24,23 @@ export default function WeatherProvider({children}) {
 
     // 載入定位和預設位置的天氣資訊
     useEffect(() => {
+        const fetchWeather = async (cityName) => {
+            try {
+                const data = await getWeatherData(cityName)
+                setWeather({
+                    description: data.description,
+                    temperature: {
+                        minTemp: data.minTemp,
+                        maxTemp: data.maxTemp
+                    },
+                    icon: weartherIconList[data.value]
+                })
+            }
+            catch (error) {
+                console.log('@@--', `獲取 ${cityName} 的天氣資料出錯:`, error);
+            }
+        }
+
         const fetchCityData = async () => {
             setLoading(true);  // 開始加載
 
@@ -49,6 +66,7 @@ export default function WeatherProvider({children}) {
                 }
                 catch (error) {
                     console.error('獲取定位或天氣資料出錯:', error);
+
                     // 如果定位失敗，使用預設地區
                     await fetchWeather("臺中市")
                 }
@@ -60,23 +78,6 @@ export default function WeatherProvider({children}) {
             setLoading(false);  // 完成加載
         }
         fetchCityData()
-
-        const fetchWeather = async (cityName) => {
-            try {
-                const data = await getWeatherData(cityName)
-                setWeather({
-                    description: data.description,
-                    temperature: {
-                        minTemp: data.minTemp,
-                        maxTemp: data.maxTemp
-                    },
-                    icon: weartherIconList[data.value]
-                })
-            }
-            catch (error) {
-                console.log('@@--', `獲取 ${cityName} 的天氣資料出錯:`, error);
-            }
-        }
     }, [])
 
     // 使用 useMemo 優化 Context

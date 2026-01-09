@@ -28,7 +28,6 @@ export function dashboardLoader() {
 // action 寫入資料
 export async function dashboardAction({ request }) {
     const data = await request.formData()
-    // 除了 _action，其他值都放入物件 ( 物件名稱為 values )
     const { _action, ...values } = Object.fromEntries(data)
 
     if (_action === "delete_single_expense") {
@@ -47,38 +46,43 @@ export default function Dashboard() {
 
     return (
         <>
-            {userName ?
-                (
-                    <>
-                        <section id="summaryHeader" className='flex-col gap-4 md:flex-wrap md:items-center'>
-                            <h2 className='text-4xl lg:text-3xl md:text-2xl'><span className="text-primary">{userName}</span> 的記帳本</h2>
-                            <div className='flex gap-4 flex-wrap'>
-                                <WeatherInfo />
-                                {expense && expense.length > 0 && (
-                                    <CategoryChart category={category} />
-                                )}
-                                <Note category={category || []} />
-                            </div>
-                        </section>
+            {
+                userName ?
+                    (
+                        <>
+                            <section id="summaryHeader" className='flex-col gap-4 md:flex-wrap md:items-center'>
+                                <h2 className='text-4xl lg:text-3xl md:text-2xl'><span className="text-primary">{userName}</span> 的記帳本</h2>
+                                <div className='flex gap-4 flex-wrap'>
+                                    <WeatherInfo/>
+                                    {
+                                        expense && expense.length > 0 && (
+                                            <CategoryChart category={category} />
+                                        )
+                                    }
+                                    <Note category={category || []} />
+                                </div>
+                            </section>
 
-                        <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_1.svg')` }}></div>
+                            <div id="background" className='background bg-right bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_1.svg')` }}></div>
 
-                        {category && category.length > 0 && (
-                            <>
-                                <CategoryForm category={category} expense={expense} />
+                            {category && category.length > 0 && (
+                                <>
+                                    <CategoryForm category={category} expense={expense} />
 
-                                <div id="background" className='background bg-left bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_2.svg')` }}></div>
+                                    <div id="background" className='background bg-left bg-no-repeat bg-contain w-full h-[4rem] my-4 md:h-[3rem] sm:h-[2rem]' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/assets/bg_2.svg')` }}></div>
 
-                                {expense && (
-                                    <ExpenseForm show7Items={true} expense={expense} />
-                                )}
-                            </>
-                        )}
-                    </>
-                ) :
-                (
-                    <Login />
-                )
+                                    {
+                                        expense && (
+                                            <ExpenseForm show7Items={true} expense={expense} />
+                                        )
+                                    }
+                                </>
+                            )}
+                        </>
+                    ) :
+                    (
+                        <Login />
+                    )
             }
         </>
     )
