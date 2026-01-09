@@ -23,7 +23,7 @@ export default function Nav(props) {
         className="absolute -top-6"
       />
 
-      <Link to="/" className="text-lightAccent1 flex items-center gap-1 group z-20">
+      <Link to="/" className="text-lightAccent1 flex items-center gap-1 group">
         <img
           src={`${process.env.PUBLIC_URL}/assets/logo.svg`}
           alt="logo"
@@ -33,7 +33,6 @@ export default function Nav(props) {
           Buddy Budget
         </span>
       </Link>
-
       {userName && (
         <Form method="post" action="/logout" onSubmit={checkDeleteUser}>
           <button
