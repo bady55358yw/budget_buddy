@@ -1,14 +1,11 @@
 import React from 'react'
-
 // 引入 toast
 import { toast } from 'react-toastify'
 
-// 引入 utilities
 import { parseCSV, importCategory, importExpense } from '../utilities'
 
-// --- 底下開始撰寫 ---
-
-export default function ImportData({ trigerRender }) {
+export default function ImportData(props) {
+    const { trigerRender } = props
 
     async function importCSV(e) {
         const file = e.target.files[0]

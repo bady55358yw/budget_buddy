@@ -27,16 +27,16 @@ export default function AddCategory() {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const verifyResult = verifyCategory(formData)
 
-    if (verifyResult) { // 非 undefined，代表驗證有問題
+    if (verifyResult) {
       e.preventDefault() // 阻止表單提交
       setErrors(verifyResult)
     }
     else {
-      // 提交後重新渲染組件
-      // PubSub.publish('updateCategory','更新項目的類別')
+      // 提交後重新渲染項目組件
+      PubSub.publish('updateCategory','更新項目的類別')
 
       // 提交後清空欄位
       setFormData({

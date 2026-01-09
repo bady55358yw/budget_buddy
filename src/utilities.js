@@ -12,6 +12,7 @@ import Papa from 'papaparse'
 
 // 引入預設範本資料(使用者/類別/項目)
 import {prev_uerName,prev_categoryArr,prev_expenseArr} from './datas/defaultUserData'
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 // --- 底下開始撰寫 ---
 
@@ -238,7 +239,7 @@ export function verifyCategory(inputData) {
         }
     }
 
-    // 禁用 fullMessages，改成自定義的 message ( 提示文字 )
+    // 禁用 fullMessages
     validate.options = { fullMessages: false };
     const result = validate(inputData, constraints)
     return result
@@ -367,7 +368,7 @@ function inspectCSV(rows) {
 
     rows.forEach(row => {
 
-        // 如果是空行就跳過 ( 要放在最前面，否則如果 expense 區前一行是空白會導致錯誤 )
+        // 如果是空行就跳過 ( 要放在最前面，否則在判斷區塊是否為 expense 會有誤 )
         if (!row.category_id && !row.category_budget && !row.category_name) {
             return
         }
@@ -434,7 +435,7 @@ export function importCategory(categoryData) {
 // 新增匯入的項目資料
 export function importExpense(expenseData) {
     expenseData.forEach((data, index) => {
-        if (index > 0) { //跳過 expense 的標題
+        if (index > 0) { //跳過expense的標題
             const expenseArr = fetchData("expense") ?? []
             const isDuplicate = expenseArr.some((expense) => expense.expense_id === data.expense_id)
 
