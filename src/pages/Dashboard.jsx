@@ -66,7 +66,7 @@ export default function Dashboard() {
               )}
 
               {/* Statistics */}
-              <Note category={category} expense={expense} />
+              <Note category={category || []} />
             </div>
           </section>
 
