@@ -1,3 +1,6 @@
+// 引入 context
+import { createContext } from 'react';
+
 // 引入隨機碼
 import { nanoid } from 'nanoid';
 
@@ -5,9 +8,8 @@ import { nanoid } from 'nanoid';
 import axios from "axios";
 
 // 引入 validate.js
-import validate from 'validate.js';
+import validate, { result } from 'validate.js';
 
-// 引入 Papa
 import Papa from 'papaparse'
 
 // --- 底下開始撰寫 ---
@@ -322,7 +324,7 @@ export function verifyInput(name, mail) {
         }
     };
 
-    // 禁用 fullMessages，因為提示文字要自定義
+    // 禁用 fullMessages
     validate.options = { fullMessages: false };
     const verifyResult = validate(inputData, constraints)
     return {

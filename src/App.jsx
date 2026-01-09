@@ -26,7 +26,6 @@ const router = createHashRouter([
     path: "/",
     element: <Main />,
     loader: mainLoader,
-    errorElement: <Error />,
     children: [
       {
         index: true,

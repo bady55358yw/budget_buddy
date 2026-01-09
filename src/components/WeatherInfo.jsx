@@ -7,12 +7,38 @@ import { formatDate, transferCityName, getWeatherData } from '../utilities'
 // 引入 icon
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
-// 引入天氣 icon 清單
-import {weartherIconList} from '../datas/weatherIcon'
+// 天氣對應的 icon 列表
+const weartherIconList = {
+    '1': `${process.env.PUBLIC_URL}/icons/sun_sunny_temperature_icon.svg`,
+    '2': `${process.env.PUBLIC_URL}/icons/clouds_sun_sunny_icon.svg`,
+    '3': `${process.env.PUBLIC_URL}/icons/clouds_sun_sunny_icon.svg`,
+    '4': `${process.env.PUBLIC_URL}/icons/cloud_clouds_cloudy_icon.svg`,
+    '5': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_fog_foggy_icon.svg`,
+    '6': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_fog_foggy_icon.svg`,
+    '7': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_fog_foggy_icon.svg`,
+    '8': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '9': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '10': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '11': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '12': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '13': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '14': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '15': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '16': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '17': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '18': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '19': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_rain_sunny_icon.svg`,
+    '20': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '21': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '22': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+    '29': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '30': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '33': `${process.env.PUBLIC_URL}/icons/clouds_cloudy_forecast_rain_icon.svg`,
+    '34': `${process.env.PUBLIC_URL}/icons/clouds_night_storm_icon.svg`,
+}
 
-// --- 底下開始撰寫 ---
-
-export default function WeatherInfo() {
+export default function WeatherInfo(props) {
+    const { userName } = props
     const navigate = useNavigate()
 
     const [time, setTime] = useState(formatDate(new Date()))

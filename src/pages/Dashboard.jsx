@@ -53,7 +53,7 @@ export default function Dashboard() {
                             <section id="summaryHeader" className='flex-col gap-4 md:flex-wrap md:items-center'>
                                 <h2 className='text-4xl lg:text-3xl md:text-2xl'><span className="text-primary">{userName}</span> 的記帳本</h2>
                                 <div className='flex gap-4 flex-wrap'>
-                                    <WeatherInfo/>
+                                    <WeatherInfo userName={userName} />
                                     {
                                         expense && expense.length > 0 && (
                                             <CategoryChart category={category} />
