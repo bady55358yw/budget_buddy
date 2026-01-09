@@ -17,7 +17,7 @@ export default function Main() {
   const { userName } = useLoaderData();
 
   return (
-    <div id="layout" className="relative px-12 pb-12 flex flex-col min-h-screen h-full">
+    <div id="layout" className="relative px-12 md:px-24 pb-24">
       {/* Nav bg */}
       <img
         src={`${process.env.PUBLIC_URL}/assets/nav_bg.png`}
@@ -27,7 +27,7 @@ export default function Main() {
 
       <Nav userName={userName} />
 
-      <main className="flex flex-col mt-12 space-y-40 flex-1">
+      <main className="mt-12 space-y-40">
         <Outlet />
       </main>
     </div>

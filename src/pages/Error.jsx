@@ -17,11 +17,11 @@ export default function Error() {
           <p className='text-lg text-center'>{errorMsg?.message?errorMsg.message:"趕快回家！嗚嗚嗚...QQ"}</p>
         </div>
         <div className='flex gap-4 my-8 lg:my-16'>
-          <button onClick={()=>navigate(-1)} className='btn-primary-stroke flex items-center gap-1 w-auto self-center'>
+          <button onClick={()=>navigate(-1)} className='btn-base-oval flex items-center gap-1 w-auto self-center'>
             <span>回上一頁 </span>
             <ArrowUturnLeftIcon width={24}/>
           </button>
-          <Link to="/" className='btn-primary-stroke flex items-center gap-1 w-auto self-center'>
+          <Link to="/" className='btn-base-oval flex items-center gap-1 w-auto self-center'>
             <span>回主畫面</span>
             <HomeIcon width={24}/>
           </Link>
