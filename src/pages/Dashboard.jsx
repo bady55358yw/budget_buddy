@@ -7,7 +7,6 @@ import { deleteSinExpense, fetchData } from "../utilities";
 import CategoryChart from "../components/CategoryChart";
 import CategoryForm from "../components/CategoryForm";
 import ExpenseForm from "../components/ExpenseForm";
-import Login from "../components/Login";
 import Note from "../components/Note";
 import WeatherInfo from "../components/WeatherInfo";
 
@@ -19,8 +18,8 @@ import { toast } from "react-toastify";
 // loader 載入資料
 export function dashboardLoader() {
   const userName = fetchData("userName");
-  const category = fetchData("category");
-  const expense = fetchData("expense");
+  const category = fetchData("category") || [];
+  const expense = fetchData("expense") || [];
   return { userName, category, expense }; //因為回傳是物件，所以取出時要用此名稱(key)去取值
 }
 
@@ -42,9 +41,12 @@ export async function dashboardAction({ request }) {
 
 export default function Dashboard() {
   const { userName, category, expense } = useLoaderData(); // 從loader載入資料
+  const hasCategory = category.length > 0;
+  const hasExpense = expense.length > 0;
 
   return (
     <>
+      {/* Section：Name, Weather, Chart, Statistics */}
       <section
         id="summaryHeader"
         className="flex-col items-center md:items-start"
@@ -55,28 +57,22 @@ export default function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 w-full">
-          {/* Weather */}
           <WeatherInfo />
 
-          {/* Donut Chart */}
-          {expense && expense.length > 0 && (
-            <CategoryChart category={category} />
-          )}
-
-          {/* Statistics */}
-          {category && expense && (
-            <Note category={category} expense={expense} />
+          {hasCategory && (
+            <>
+              <CategoryChart category={category} />
+              <Note category={category} expense={expense} />
+            </>
           )}
         </div>
       </section>
 
-      {category && category.length > 0 && (
-        <>
-          <CategoryForm category={category} expense={expense} />
+      {/* Section：Category Lists */}
+      {hasCategory && <CategoryForm category={category} expense={expense} />}
 
-          {expense && <ExpenseForm show7Items={true} expense={expense} />}
-        </>
-      )}
+      {/* Section：Expense Lists */}
+      {hasExpense && <ExpenseForm show7Items={true} expense={expense} />}
     </>
   );
 }
