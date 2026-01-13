@@ -9,7 +9,7 @@ import { ReactComponent as PieChartIcon } from "../assets/pieChart_icon.svg";
 export default function Note({ category, expense }) {
   let reachBudget = [];
 
-  category.forEach((element) => {
+  category?.forEach((element) => {
     const spendTotal = calculateExpenseAmount(element.category_id);
     const remainTotal = Number(element.category_budget - spendTotal);
     if (remainTotal < 0) {
@@ -18,7 +18,7 @@ export default function Note({ category, expense }) {
     }
   });
 
-  const top3Expenses = expense
+  const top3Expenses = (expense||[])
     .sort((a, b) => b.expense_amount - a.expense_amount)
     .slice(0, 3);
 
