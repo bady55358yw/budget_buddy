@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-import { useParams, useLoaderData, Link, Form, redirect, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Form, Link, redirect, useLoaderData, useNavigate, useParams } from 'react-router-dom'
 
 // 引入utilites
-import { fetchData, deleteSinCategory, deleteMatchExpense, deleteSinExpense, createExpense } from '../utilities'
+import { createExpense, deleteMatchExpense, deleteSinCategory, deleteSinExpense, fetchData } from '../utilities'
 
 // 引入一般組件
-import CategoryItem from '../components/CategoryCard'
 import AddExpense from '../components/AddExpense'
+import CategoryCard from '../components/CategoryCard'
 import ExpenseForm from '../components/ExpenseForm'
 
 // 引入 icon
@@ -107,8 +107,8 @@ export default function Category() {
                 </Form>
               </div>
 
-              <div className='flex items-start gap-x-12'>
-                <CategoryItem categoryObj={categoryObj} notShowOverviewBtn={true} />
+              <div className='flex flex-col md:flex-row items-start gap-x-12 gap-y-8'>
+                <CategoryCard categoryData={categoryObj} notShowOverviewBtn={true} />
                 <AddExpense category={filterCategory_arr} categoryName={categoryObj.category_name} categoryColor={categoryObj.category_color} />
               </div>
             </section>

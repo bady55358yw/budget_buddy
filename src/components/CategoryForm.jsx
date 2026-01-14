@@ -20,7 +20,7 @@ export default function CategoryForm(props) {
                     category && (
                         category.map((item => {
                             return (
-                                <CategoryCard key={item.category_id} categoryObj={item} />
+                                <CategoryCard key={item.category_id} categoryData={item} />
                             )
                         }))
                     )
