@@ -26,7 +26,7 @@ export default function Main() {
       <img
         src={`${process.env.PUBLIC_URL}/assets/header_bg.png`}
         alt="header_bg"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw]"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] -z-20"
       />
 
       <Nav userName={userName} />
